@@ -22,13 +22,15 @@ public class Job {
         nextId++;
     }
 
-    public Job(CoreCompetency coreCompetency, PositionType positionType, Location location, Employer employer, String name, int id) {
-        this.coreCompetency = coreCompetency;
-        this.positionType = positionType;
-        this.location = location;
-        this.employer = employer;
+    public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
+        this();
         this.name = name;
+        this.employer = employer;
+        this.location = location;
+        this.positionType = positionType;
+        this.coreCompetency = coreCompetency;
     }
+
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
@@ -38,12 +40,24 @@ public class Job {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Job job = (Job) o;
-        return id == job.id && Objects.equals(name, job.name) && Objects.equals(employer, job.employer) && Objects.equals(location, job.location) && Objects.equals(positionType, job.positionType) && Objects.equals(coreCompetency, job.coreCompetency);
+        return id == job.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, employer, location, positionType, coreCompetency);
+        return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Job{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", employer=" + employer +
+                ", location=" + location +
+                ", positionType=" + positionType +
+                ", coreCompetency=" + coreCompetency +
+                '}';
     }
 
 
