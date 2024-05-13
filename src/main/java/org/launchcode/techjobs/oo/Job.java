@@ -2,9 +2,11 @@ package org.launchcode.techjobs.oo;
 
 import java.util.Objects;
 
+import static java.lang.System.lineSeparator;
+
 public class Job {
 
-    private int id;
+    private final int id;
     private static int nextId = 1;
 
     private String name;
@@ -12,6 +14,8 @@ public class Job {
     private Location location;
     private PositionType positionType;
     private CoreCompetency coreCompetency;
+    private static final String empty = "Data not available";
+
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
     //  other five fields. The second constructor should also call the first in order to initialize
@@ -50,15 +54,27 @@ public class Job {
 
     @Override
     public String toString() {
-        return "Job{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", employer=" + employer +
-                ", location=" + location +
-                ", positionType=" + positionType +
-                ", coreCompetency=" + coreCompetency +
-                '}';
+        if (Objects.equals(employer.getValue(), "")) {
+            this.employer.setValue(empty);
+        }
+        if (Objects.equals(location.getValue(), "")) {
+            this.location.setValue(empty);
+        }
+        if (Objects.equals(positionType.getValue(), "")) {
+            this.positionType.setValue(empty);
+        }
+        if (Objects.equals(coreCompetency.getValue(), "")) {
+            this.coreCompetency.setValue(empty);
+        }
+        return lineSeparator() +
+                "ID: " + this.id + "\n" +
+                "Name: " + this.name + "\n" +
+                "Employer: " + this.employer + "\n" +
+                "Location: " + this.location + "\n" +
+                "Position Type: " + this.positionType + "\n" +
+                "Core Competency: " + this.coreCompetency + lineSeparator();
     }
+
 
 
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
@@ -88,6 +104,7 @@ public class Job {
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
     }
+
 
     //setter
 
