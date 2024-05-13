@@ -55,7 +55,7 @@ public class JobTest {
 
         // Expected string with formatting
         String expected = "\n" +
-                "ID: 1\n" +
+                "ID: " + job1.getId()+ "\n" +
                 "Name: Product tester\n" +
                 "Employer: ACME\n" +
                 "Location: Desert\n" +
@@ -76,7 +76,7 @@ public class JobTest {
 
         // Expected string with correct labels and data
         String expected = "\n" +
-                "ID: 1\n" +
+                "ID: " + job1.getId()+ "\n" +
                 "Name: Product tester\n" +
                 "Employer: ACME\n" +
                 "Location: Desert\n" +
